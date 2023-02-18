@@ -1,4 +1,5 @@
 from tkinter import filedialog
+import os
 
 "\n"
 opcion = input("Lenguajes Formales y de Programación\nSección : B+ \nCarnet : 201709088 \nNombre : Leonel Antonio González García\n")
@@ -25,12 +26,14 @@ def Menu():
 
         elif opcionMenu =="2":
             print("---->Gestionar Películas")
+            clear()
             MenuGestionar()
             print("")
             
             
         elif opcionMenu =="3":
             print("----->Filtrar")
+            clear()
             MenuFiltrar()
             print("")
             
@@ -46,9 +49,11 @@ def Menu():
                     input("No has pulsado ninguna opción correcta...\n Pulsa una tecla para continuar")
         
 
-
-
-     
+def clear():
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
 
 def CargarArchivo():
         print("Boton Cargar Archivo")
@@ -89,7 +94,9 @@ def MenuGestionar():
             print("")
             
         elif opcionMenu=="c":
+            clear()
             break
+            
         else:
                     print ("")
                     input("No has pulsado ninguna opción correcta...\n Pulsa una tecla para continuar")
@@ -117,6 +124,7 @@ def MenuFiltrar():
             print(" ---->Filtrar por Género")
             print("")
         elif opcionMenu=="d":
+            clear()
             break
         else:
                     print ("")
