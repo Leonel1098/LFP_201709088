@@ -127,6 +127,15 @@ def CargarArchivo():
         root.destroy()
         print(Data)
         print("Carga Exitosa")
+        lista_peliculas()
+
+def lista_peliculas():
+     list_peliculas = []
+     diccionario = {Data}
+     #print(diccionario)
+     list_peliculas.append(diccionario)
+     print(list_peliculas)
+
 
 
 #Método para limpiar la consola  
