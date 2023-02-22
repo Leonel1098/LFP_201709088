@@ -1,4 +1,5 @@
 from tkinter import filedialog
+from tkinter import Tk
 import os
 
 "\n"
@@ -23,6 +24,7 @@ def Menu():
            print("---->Cargar Archivo de Entrada")
            print("")
            CargarArchivo()
+           
 
         elif opcionMenu =="2":
             print("---->Gestionar Películas")
@@ -48,32 +50,6 @@ def Menu():
                     print ("")
                     input("No has pulsado ninguna opción correcta...\n Pulsa una tecla para continuar")
         
-
-def clear():
-    if os.name == "nt":
-        os.system("cls")
-    else:
-        os.system("clear")
-
-def CargarArchivo():
-        print("Boton Cargar Archivo")
-
-        
-        #Abre Ventana para Buscar el archivo .lfp 
-        archivo =  filedialog.askopenfilename(initialdir = "/") 
-            #Abre el achivo 
-        archivo_texto = open(archivo ,'r',encoding="utf8")
-            #Contenido del archivo leido 
-        texto = archivo_texto.read()
-        archivo_texto.close()
-            #Analiza el contenido del Archivo 
-        
-        global Instrucciones
-        Instrucciones = texto
-        
-       
-        print(Instrucciones)
-
 def MenuGestionar():
      while True:
         print("")
@@ -109,7 +85,7 @@ def MenuFiltrar():
         print("     c. Filtrar por Género")
         print("     d. Regresar a Menú ")
         print("")
-        # solicituamos una opción al usuario
+        # solicitamos una opción al usuario
         opcionMenu = input(" Por favor seleccione una opcion >> ")
         
         if opcionMenu =="a":
@@ -127,8 +103,38 @@ def MenuFiltrar():
             clear()
             break
         else:
-                    print ("")
-                    input("No has pulsado ninguna opción correcta...\n Pulsa una tecla para continuar")
+            print ("")
+            input("No has pulsado ninguna opción correcta...\n Pulsa una tecla para continuar")
+
+#Método para cargar el archivo mediante un administrador de archivos
+def CargarArchivo():
+        
+        root = Tk()
+
+        #Abre Ventana para Buscar el archivo .lfp 
+        archivo =  filedialog.askopenfilename(initialdir = "/") 
+        
+        #Abre el achivo 
+        archivo_texto = open(archivo ,'r',encoding="utf8")
+        
+        #Contenido del archivo leido 
+        texto = archivo_texto.read()
+        archivo_texto.close()
+
+        #Analiza el contenido del Archivo 
+        global Data
+        Data = texto
+        root.destroy()
+        print(Data)
+        print("Carga Exitosa")
+
+
+#Método para limpiar la consola  
+def clear():
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
      
 
 Menu()
