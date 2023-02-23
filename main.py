@@ -1,6 +1,8 @@
 from tkinter import filedialog
 from tkinter import Tk
 import os
+from Pelicula import *
+lista_peliculas = []
 
 "\n"
 opcion = input("Lenguajes Formales y de Programación\nSección : B+ \nCarnet : 201709088 \nNombre : Leonel Antonio González García\n")
@@ -64,7 +66,7 @@ def MenuGestionar():
         if opcionMenu =="a":
            print("  ---->Mostrar Películas")
            print("")
-
+           mostrarPeliculas()
         elif opcionMenu =="b":
             print(" ---->Mostar Actores")
             print("")
@@ -108,7 +110,6 @@ def MenuFiltrar():
 
 #Método para cargar el archivo mediante un administrador de archivos
 def CargarArchivo():
-        
         root = Tk()
 
         #Abre Ventana para Buscar el archivo .lfp 
@@ -127,16 +128,35 @@ def CargarArchivo():
         root.destroy()
         print(Data)
         print("Carga Exitosa")
-        lista_peliculas()
+        diccionario()
+       
+    
+def diccionario():
+    info = Data.split("\n")
+    for s in info:
+        diccionario = s.split(";")
 
-def lista_peliculas():
-     list_peliculas = []
-     diccionario = {Data}
-     #print(diccionario)
-     list_peliculas.append(diccionario)
-     print(list_peliculas)
+        peli = {
+            "nombre:" +diccionario[0],
+            "reparto:" +diccionario[1],
+            "año:" +diccionario[2],
+            "genero:"+diccionario[3]
+        }
+        lista_peliculas.append(peli)
+    print(lista_peliculas)
 
+#Método que muestra las películas del archivo cargado   
+def mostrarPeliculas():
+    print(lista_peliculas)
+    info = Data.split("\n")
 
+    for s in info:
+        diccionario = s.split(";")
+        print("------------------Película-----------------")
+        print("nombre:"+diccionario[0])
+        print("Reparto:"+diccionario[1])
+        print("año:"+diccionario[2])
+        print("Genero:"+diccionario[3])
 
 #Método para limpiar la consola  
 def clear():
@@ -147,3 +167,32 @@ def clear():
      
 
 Menu()
+ ###for i in leer: 
+             ###nombre, actores,año,genero = i[0],i[1],i[2],i[3]
+             ###variable1 = Pelicula(nombre, actores, año, genero)
+             ###arreglo.append(variable1)
+
+###for i in range(len(arreglo)):
+             ###print(arreglo[i].getNombre())
+        
+        ###arreglo[0].setNombre("Nombre") 
+        ###for i in range(len(arreglo)):
+             ###print(arreglo[i].getNombre())
+
+       ###print(arreglo[2].getActor())
+
+
+   ### print("buscar por id del atributo del diccionario  lista------------------------------")
+    ###print(pelis[0]["nombre"])
+   ### print("--------------------------para Recorere")
+    ###for p in pelis:
+   ### print(p["nombre"])###
+
+   ###d= data.split("\n")
+###for s in d:
+    ###d2 = s.split(";")
+    ###print("------------------Pelicula-----------------")
+    ###print("nombre:"+d2[0])
+    ###print("Reparto:"+d2[1])
+    ###print("año:"+d2[2])
+    ###print("Genero:"+d2[3])
